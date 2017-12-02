@@ -1,0 +1,11 @@
+<style>
+     .center{ 
+    margin: 0 auto;
+     }
+     body{
+      margin-left: 
+      max-width: 95%;
+      text-align: center; 
+
+     }
+     </style>

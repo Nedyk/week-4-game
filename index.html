@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Crystal Collector</title>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+     <style>
+     .center{ 
+    margin: 0 auto;
+     }
+     body{
+      margin-left: 
+      max-width: 95%;
+      text-align: center; 
+
+     }
+     </style>
+    </head>
+<body>
+
+  <div class="jumbotron">
+       <div class="container text-center">
+        <h1 class="text-center"><strong>Crystal Collector!</strong></h1>
+      <h3 class="text-left">How to play</h3>
+   <hr>
+   <div class="text-left"><ul>
+  <li>You will be given a random number at the start of the game. </li> 
+  <li>There are four crystals below. By clicking on a crystal, you will add a specific amount of points to your total score.</li> 
+  <li> You win the game by matching your total score to the random number. You lose the game if your total score goes above the random number.<li> 
+  <li> The value of each crystal is hidden from you until you click on it.</li>
+  <li> Each time when the game starts, the game will change the values of each crystal. </li>
+</ul>
+   </div>
+
+  </div>
+  <div class="row"> <div class="col-lg-8">
+
+      <div class="panel panel-default">
+
+        <div class="panel-body center">
+          <div id ="random" style = "height: 20px">Random number: </div> 
+        <br> 
+        <br>
+        <button id="pic1" class = "crystalPics">
+         
+            <img src="images/pic1.jpg" alt="" width="30" height = "30">
+         
+        </button>
+
+        <button id="pic2" class = "crystalPics">
+          
+            <img src="images/pic2.jpg" alt="" width="30" height = "30">
+          
+        </button>
+
+        <button id="pic3" class = "crystalPics">
+          
+            <img src="images/pic3.jpg" alt="" width="30" height = "30">
+         
+        </button>
+
+        <button id="pic4" class = "crystalPics">
+          
+            <img src="images/pic4.jpg" alt="" width="30" height = "30">
+         
+        </button>
+        <hr> 
+     <div id="result"><strong>Total Score:</strong></div>
+      <hr> 
+     <div id ="wins"></div>
+
+ <hr> 
+     <div id ="loss"></div></div>
+
+        
+
+  </div> 
+ 
+</div> 
+</div>
+</div>
+   
+</div>
+
+
+
+ </body> 
+
+
+
+
+
+
+<script>
+ 
+  
+$(document).ready(function(){
+  var wins = 0;
+  var loss = 0;
+  var result = 0;
+
+  var random_num = Math.floor((Math.random() * 120) + 19);
+  var crystal1 = Math.floor((Math.random() * 12) + 1);
+  var crystal2 = Math.floor((Math.random() * 12) + 1);
+  var crystal3 = Math.floor((Math.random() * 12) + 1);
+  var crystal4 = Math.floor((Math.random() * 12) + 1);
+  
+
+  $("#random").html('Random #: ' + random_num);
+  $("#wins").text("Wins"); 
+  $("#loss").text("Losses");
+  $('#result').html('Total points: ' + result);
+  
+
+//onclick events 
+  $("#pic1").on("click", function(){
+     console.log("pic");
+      result += crystal1; 
+      $('#result').html('Total points: ' + result);   
+      winner();
+  });
+
+
+  $("#pic2").on("click", function(){
+    console.log("pic2");
+      result += crystal2; 
+      $('#result').html('Total points: ' + result);
+
+      winner();
+  });
+
+  $("#pic3").on("click", function(){
+    console.log("pic3");
+      result += crystal3; 
+      $('#result').html('Total points: ' + result);
+
+      winner();
+  });
+
+  $("#pic4").on("click", function(){
+    console.log("pic4");
+      result += crystal4; 
+      $('#result').html('Total points: ' + result);
+
+      winner();
+  });
+
+
+//winning
+function winner(){
+    if (result === random_num) {
+      $("#wins").text("WINNER!!!"); 
+      alert("You Won!!")
+      wins++;
+      $("#wins").text("Wins " + ": " + wins ); 
+      
+      
+    };
+    function loser(){
+      if (result > random_num) {
+        console.log("you lost")
+      $("#loss").text("LOSSER!!!"); 
+      alert("You Lost!!");
+      loss--; 
+      $("#loss").text("Losses " + ": " + loss);
+     
+
+    }
+  }
+
+
+  }
+function reset(){
+  var wins = 0;
+  var loss = 0;
+  var result = 0;
+   var random_num = Math.floor((Math.random() * 120) + 19);
+   ('#result').html('Total points: ' + result);
+
+}
+
+});
+
+
+  
+
+
+
+</script> 
+</body>
+</html>
+
